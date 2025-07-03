@@ -1,16 +1,14 @@
-# This is a sample Python script.
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+driver = webdriver.Chrome()
+driver.maximize_window()
+driver.implicitly_wait(10)
+driver.get("https://elenta.lt")
+driver.find_element(By.XPATH, "//p[contains(@class, 'fc-button-label') and contains(text(), 'Sutik')]").click()
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+login_button = driver.find_element(By.XPATH, "//a[contains(@href, '/prisijungti')]")
+login_button.click()
+register_link = driver.find_element(By.XPATH, "//a[contains(@href, '/registracija')]")
+register_link.click()
+input()
